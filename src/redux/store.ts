@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import accountReducer from "./slices/account";
+import tutorialReducer from "./slices/tutorial";
 import tutorialStepsReducer from "./slices/tutorialSteps";
 import storage from "redux-persist/lib/storage";
 import {
@@ -20,7 +20,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  account: persistReducer(persistConfig, accountReducer),
+  tutorial: persistReducer(persistConfig, tutorialReducer),
   tutorialSteps: persistReducer(persistConfig, tutorialStepsReducer),
   [RootApi.reducerPath]: RootApi.reducer,
 });

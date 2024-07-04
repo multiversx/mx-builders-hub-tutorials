@@ -5,10 +5,8 @@ import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { useEffect } from "react";
 
 function App() {
-  // useEffect(() => {}, []);
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

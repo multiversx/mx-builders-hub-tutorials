@@ -3,6 +3,10 @@ import { Dashboard, Home } from "../pages";
 import { Tutorial } from "../components";
 import { SideBarLayout } from "../components/SideBarLayout";
 import { relayedV3Map, relayedV3MapComponents } from "../turorials";
+import {
+  extensionProviderMap,
+  extensionProviderMapComponents,
+} from "../turorials/extensionProvider";
 
 export const routeNames = {
   dashboard: {
@@ -13,9 +17,9 @@ export const routeNames = {
         displayName: "Relayed transaction V3",
       },
 
-      relayedV2: {
-        name: `/dashboard/relayedV2`,
-        displayName: "Relayed transaction V2",
+      extensionProvider: {
+        name: `/dashboard/extensionProvider`,
+        displayName: "Extension provider",
       },
     },
   },
@@ -50,12 +54,12 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: routeNames.dashboard.children.relayedV2.name,
+        path: routeNames.dashboard.children.extensionProvider.name,
         element: (
           <Tutorial
-            title={routeNames.dashboard.children.relayedV2.displayName}
-            tutorialMap={relayedV3Map}
-            tutorialMapComponents={relayedV3MapComponents}
+            title={routeNames.dashboard.children.extensionProvider.displayName}
+            tutorialMap={extensionProviderMap}
+            tutorialMapComponents={extensionProviderMapComponents}
           />
         ),
       },

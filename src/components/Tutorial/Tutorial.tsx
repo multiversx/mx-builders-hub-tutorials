@@ -6,11 +6,13 @@ import { CenterLayout } from "../CenterLayout";
 import { Loader } from "../Loader";
 import { useEffect } from "react";
 import {
+  resetTutorial,
   setActiveStep,
   setIsFirstStep,
   setIsLastStep,
   setSteps,
 } from "../../redux";
+import { useLocation } from "react-router-dom";
 
 export const Tutorial = ({
   title,
@@ -21,19 +23,16 @@ export const Tutorial = ({
     tutorialStepsSelector
   );
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const setStep = (step: number) => {
     dispatch(setActiveStep(step));
   };
 
   useEffect(() => {
-    if (!tutorialSteps) dispatch(setSteps(tutorialMap));
-
-    return () => {
-      console.log("herere!");
-      dispatch(setSteps(null));
-    };
-  }, []);
+    dispatch(setSteps(tutorialMap));
+    dispatch(resetTutorial());
+  }, [location]);
 
   if (!tutorialSteps) {
     return (
