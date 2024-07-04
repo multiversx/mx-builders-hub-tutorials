@@ -14,8 +14,9 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlig
 import { darcula, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const Step3 = () => {
-  const { signedMessage, address: stateAddress } =
-    useSelector(tutorialSelector);
+  const {
+    tutorialData: { signedMessage, address: stateAddress },
+  } = useSelector(tutorialSelector);
   const dispatch = useDispatch();
 
   const signMessage = async () => {

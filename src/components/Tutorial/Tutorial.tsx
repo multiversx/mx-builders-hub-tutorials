@@ -33,6 +33,7 @@ export const Tutorial = ({
   };
 
   useEffect(() => {
+    console.log(currentRoute, "1", location.pathname);
     if (currentRoute !== location.pathname) {
       dispatch(setCurrentRoute(location.pathname));
       resetState();
@@ -40,6 +41,7 @@ export const Tutorial = ({
   }, [location]);
 
   const resetState = () => {
+    console.log("state reset!");
     dispatch(setSteps(tutorialMap));
     dispatch(resetTutorial());
   };

@@ -19,8 +19,14 @@ import { vs2015, darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { useEffect } from "react";
 
 export const Step1 = () => {
-  const { challengeToken, challengeTokenSignature, address, nativeAuthToken } =
-    useSelector(tutorialSelector);
+  const {
+    tutorialData: {
+      challengeToken,
+      challengeTokenSignature,
+      address,
+      nativeAuthToken,
+    },
+  } = useSelector(tutorialSelector);
 
   const dispatch = useDispatch();
 
