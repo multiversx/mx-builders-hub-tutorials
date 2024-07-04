@@ -57,7 +57,7 @@ export const Tutorial = ({
       <div className="flex justify-between">
         <div>
           <Typography placeholder="" variant="h3">
-            {title} {currentRoute}
+            {title}
           </Typography>
         </div>
         <div>
@@ -84,7 +84,7 @@ export const Tutorial = ({
             dispatch(setIsFirstStep(value));
           }}
         >
-          {tutorialSteps?.map((tutorialStep, index) => {
+          {tutorialSteps?.map((tutorialStep: any, index: number) => {
             return (
               <Step key={index} placeholder="">
                 {index + 1}
