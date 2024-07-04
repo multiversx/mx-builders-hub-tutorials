@@ -15,7 +15,7 @@ import {
 } from "./codeExamples";
 import { ExtensionProvider } from "@multiversx/sdk-extension-provider/out";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { vs2015, darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const Step1 = () => {
   const { challengeToken, challengeTokenSignature, address, nativeAuthToken } =
@@ -67,13 +67,13 @@ export const Step1 = () => {
           >
             Generate nativeAuth challenge token
           </Typography>
-          <SyntaxHighlighter language="javascript" style={dracula}>
+          <SyntaxHighlighter language="javascript" style={vs2015}>
             {challengeTokenSample}
           </SyntaxHighlighter>
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {challengeToken ? (
-            <SyntaxHighlighter language="javascript" style={dracula}>
+            <SyntaxHighlighter language="javascript" style={darcula}>
               {`challengeToken = "${challengeToken}"`}
             </SyntaxHighlighter>
           ) : (
@@ -94,13 +94,13 @@ export const Step1 = () => {
           >
             Obtain challenge token signature and wallet address
           </Typography>
-          <SyntaxHighlighter language="javascript" style={dracula}>
+          <SyntaxHighlighter language="javascript" style={vs2015}>
             {challengeTokenSignatureAndAddressSample}
           </SyntaxHighlighter>
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {challengeTokenSignature ? (
-            <SyntaxHighlighter language="javascript" style={dracula}>
+            <SyntaxHighlighter language="javascript" style={darcula}>
               {`address = "${address}"
 signature = "${challengeTokenSignature}"
               `}
@@ -127,13 +127,13 @@ signature = "${challengeTokenSignature}"
           >
             Obtain native auth token
           </Typography>
-          <SyntaxHighlighter language="javascript" style={dracula}>
+          <SyntaxHighlighter language="javascript" style={vs2015}>
             {nativeAuthTokenSample}
           </SyntaxHighlighter>
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {nativeAuthToken ? (
-            <SyntaxHighlighter language="javascript" style={dracula}>
+            <SyntaxHighlighter language="javascript" style={darcula}>
               {`nativeAuthToken = "${nativeAuthToken}"
 
 Normally, you would now send this token to your server, which would then validate it.

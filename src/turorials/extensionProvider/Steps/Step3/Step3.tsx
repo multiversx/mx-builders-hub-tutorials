@@ -11,7 +11,7 @@ import { ExtensionProvider } from "@multiversx/sdk-extension-provider";
 import { Address, SignableMessage } from "@multiversx/sdk-core";
 import { signMessageSample } from "../Step1/codeExamples";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { darcula, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const Step3 = () => {
   const { signedMessage } = useSelector(tutorialSelector);
@@ -49,13 +49,13 @@ export const Step3 = () => {
           >
             Prepare and sign message
           </Typography>
-          <SyntaxHighlighter language="javascript" style={dracula}>
+          <SyntaxHighlighter language="javascript" style={vs2015}>
             {signMessageSample}
           </SyntaxHighlighter>
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {signedMessage ? (
-            <SyntaxHighlighter language="javascript" style={dracula}>
+            <SyntaxHighlighter language="javascript" style={darcula}>
               {`signedMessage = ${signedMessage}`}
             </SyntaxHighlighter>
           ) : (

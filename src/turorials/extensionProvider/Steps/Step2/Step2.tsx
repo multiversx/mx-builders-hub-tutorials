@@ -11,7 +11,7 @@ import { ExtensionProvider } from "@multiversx/sdk-extension-provider/out";
 import { Transaction, TransactionPayload, Address } from "@multiversx/sdk-core";
 import { signTransactionSample } from "../Step1/codeExamples";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { darcula, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const Step2 = () => {
   const dispatch = useDispatch();
@@ -60,13 +60,13 @@ export const Step2 = () => {
           >
             Prepare and sign transaction
           </Typography>
-          <SyntaxHighlighter language="javascript" style={dracula}>
+          <SyntaxHighlighter language="javascript" style={vs2015}>
             {signTransactionSample}
           </SyntaxHighlighter>
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {transactionSignature ? (
-            <SyntaxHighlighter language="javascript" style={dracula}>
+            <SyntaxHighlighter language="javascript" style={darcula}>
               {`transactionSignature = "${transactionSignature}"`}
             </SyntaxHighlighter>
           ) : (
