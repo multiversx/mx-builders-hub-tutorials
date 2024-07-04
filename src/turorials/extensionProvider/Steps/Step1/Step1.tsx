@@ -16,6 +16,7 @@ import {
 import { ExtensionProvider } from "@multiversx/sdk-extension-provider/out";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { vs2015, darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { useEffect } from "react";
 
 export const Step1 = () => {
   const { challengeToken, challengeTokenSignature, address, nativeAuthToken } =
@@ -31,6 +32,11 @@ export const Step1 = () => {
     const challengeToken = await client.initialize();
     dispatch(setKey({ key: "challengeToken", value: challengeToken }));
   };
+
+  useEffect(() => {
+    if (challengeToken && challengeTokenSignature && address && nativeAuthToken)
+      dispatch(unlockStep());
+  }, [challengeToken, challengeTokenSignature, address, nativeAuthToken]);
 
   const loginWithToken = async () => {
     const provider = ExtensionProvider.getInstance();
@@ -51,7 +57,7 @@ export const Step1 = () => {
       challengeToken,
       challengeTokenSignature
     );
-    dispatch(unlockStep());
+
     dispatch(setKey({ key: "nativeAuthToken", value: nativeAuthToekn }));
   };
 

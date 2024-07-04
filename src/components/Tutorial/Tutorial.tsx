@@ -6,8 +6,10 @@ import { CenterLayout } from "../CenterLayout";
 import { Loader } from "../Loader";
 import { useEffect } from "react";
 import {
+  currentRouteSelector,
   resetTutorial,
   setActiveStep,
+  setCurrentRoute,
   setIsFirstStep,
   setIsLastStep,
   setSteps,
@@ -22,6 +24,7 @@ export const Tutorial = ({
   const { tutorialSteps, activeStep, isLastStep, isFirstStep } = useSelector(
     tutorialStepsSelector
   );
+  const { currentRoute } = useSelector(currentRouteSelector);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -30,9 +33,16 @@ export const Tutorial = ({
   };
 
   useEffect(() => {
+    if (currentRoute !== location.pathname) {
+      dispatch(setCurrentRoute(location.pathname));
+      resetState();
+    }
+  }, [location]);
+
+  const resetState = () => {
     dispatch(setSteps(tutorialMap));
     dispatch(resetTutorial());
-  }, [location]);
+  };
 
   if (!tutorialSteps) {
     return (
@@ -44,10 +54,17 @@ export const Tutorial = ({
 
   return (
     <div className="mt-2 ml-3 px-10 ">
-      <div>
-        <Typography placeholder="" variant="h3">
-          {title}
-        </Typography>
+      <div className="flex justify-between">
+        <div>
+          <Typography placeholder="" variant="h3">
+            {title}
+          </Typography>
+        </div>
+        <div>
+          <Button placeholder="" onClick={resetState} size="sm">
+            Reset state
+          </Button>
+        </div>
       </div>
 
       <div className="w-full mt-10">

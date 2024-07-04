@@ -14,11 +14,17 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlig
 import { darcula, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const Step3 = () => {
-  const { signedMessage } = useSelector(tutorialSelector);
+  const { signedMessage, address: stateAddress } =
+    useSelector(tutorialSelector);
   const dispatch = useDispatch();
 
   const signMessage = async () => {
     const provider = ExtensionProvider.getInstance();
+    if (stateAddress) {
+      await provider.init();
+      provider.setAddress(stateAddress);
+    }
+
     const address = await provider.getAddress();
     const message = new SignableMessage({
       message: Buffer.from("hello"),

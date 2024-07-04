@@ -15,10 +15,15 @@ import { darcula, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const Step2 = () => {
   const dispatch = useDispatch();
-  const { transactionSignature } = useSelector(tutorialSelector);
+  const { transactionSignature, address } = useSelector(tutorialSelector);
 
   const signTransactions = async () => {
     const provider = ExtensionProvider.getInstance();
+    if (address) {
+      await provider.init();
+      provider.setAddress(address);
+    }
+
     const sender = await provider.getAddress();
 
     const transaction = new Transaction({

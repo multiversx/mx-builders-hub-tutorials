@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import tutorialReducer from "./slices/tutorial";
 import tutorialStepsReducer from "./slices/tutorialSteps";
+import currentRouteReducer from "./slices/currentRoute";
 import storage from "redux-persist/lib/storage";
 import {
   FLUSH,
@@ -22,6 +23,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   tutorial: persistReducer(persistConfig, tutorialReducer),
   tutorialSteps: persistReducer(persistConfig, tutorialStepsReducer),
+  currentRoute: persistReducer(persistConfig, currentRouteReducer),
   [RootApi.reducerPath]: RootApi.reducer,
 });
 

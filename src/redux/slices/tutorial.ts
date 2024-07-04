@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {};
 
-export const accountSlice = createSlice({
+export const tutorialSlice = createSlice({
   name: "tutorial",
   initialState,
   reducers: {
@@ -17,6 +17,6 @@ export const accountSlice = createSlice({
   },
 });
 
-export const { setKey, resetTutorial } = accountSlice.actions;
+export const { setKey, resetTutorial } = tutorialSlice.actions;
 
-export default accountSlice.reducer;
+export default tutorialSlice.reducer;
