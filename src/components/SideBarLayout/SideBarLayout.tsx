@@ -5,10 +5,10 @@ import {
   ListItem,
   ListItemPrefix,
 } from "@material-tailwind/react";
-import { PresentationChartBarIcon } from "@heroicons/react/24/solid";
 import { PropsWithChildren } from "react";
 import { routeNames } from "../../routes";
 import { useNavigate } from "react-router-dom";
+import { PuzzlePieceIcon } from "@heroicons/react/16/solid";
 
 export const SideBarLayout = ({ children }: PropsWithChildren) => {
   const routes = Object.values(routeNames.dashboard.children);
@@ -34,7 +34,7 @@ export const SideBarLayout = ({ children }: PropsWithChildren) => {
                   onClick={() => navigate(route.name)}
                 >
                   <ListItemPrefix placeholder="">
-                    <PresentationChartBarIcon className="h-5 w-5" />
+                    <PuzzlePieceIcon className="h-5 w-5" />
                   </ListItemPrefix>
                   {route.displayName}
                 </ListItem>
