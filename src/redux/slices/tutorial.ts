@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: any = {
+interface ItutorialStateType {
+  tutorialData: Record<string, any>;
+}
+
+const initialState: ItutorialStateType = {
   tutorialData: {},
 };
 
@@ -9,7 +13,7 @@ export const tutorialSlice = createSlice({
   name: "tutorial",
   initialState,
   reducers: {
-    setKey: (state, action: PayloadAction<Record<string, any>>) => {
+    setKey: (state, action: PayloadAction<{ key: string; value: any }>) => {
       state.tutorialData[action.payload.key] = action.payload.value;
     },
 

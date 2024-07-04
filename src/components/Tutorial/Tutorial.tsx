@@ -33,7 +33,6 @@ export const Tutorial = ({
   };
 
   useEffect(() => {
-    console.log(currentRoute, "1", location.pathname);
     if (currentRoute !== location.pathname) {
       dispatch(setCurrentRoute(location.pathname));
       resetState();
@@ -41,7 +40,6 @@ export const Tutorial = ({
   }, [location]);
 
   const resetState = () => {
-    console.log("state reset!");
     dispatch(setSteps(tutorialMap));
     dispatch(resetTutorial());
   };
@@ -59,7 +57,7 @@ export const Tutorial = ({
       <div className="flex justify-between">
         <div>
           <Typography placeholder="" variant="h3">
-            {title}
+            {title} {currentRoute}
           </Typography>
         </div>
         <div>

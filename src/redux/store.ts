@@ -18,17 +18,18 @@ import { RootApi } from "./rootApi";
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["API"],
 };
 
 const rootReducer = combineReducers({
-  tutorial: persistReducer(persistConfig, tutorialReducer),
-  tutorialSteps: persistReducer(persistConfig, tutorialStepsReducer),
-  currentRoute: persistReducer(persistConfig, currentRouteReducer),
+  tutorial: tutorialReducer,
+  tutorialSteps: tutorialStepsReducer,
+  currentRoute: currentRouteReducer,
   [RootApi.reducerPath]: RootApi.reducer,
 });
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistReducer(persistConfig, rootReducer),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
