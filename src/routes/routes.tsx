@@ -12,10 +12,10 @@ export const routeNames = {
   dashboard: {
     name: "/dashboard",
     children: {
-      relayedV3: {
-        name: `/dashboard/relayedV3`,
-        displayName: "Relayed transaction V3",
-      },
+      // relayedV3: {
+      //   name: `/dashboard/relayedV3`,
+      //   displayName: "Relayed transaction V3",
+      // },
 
       extensionProvider: {
         name: `/dashboard/extensionProvider`,
@@ -42,16 +42,16 @@ export const router = createBrowserRouter([
       </SideBarLayout>
     ),
     children: [
-      {
-        path: routeNames.dashboard.children.relayedV3.name,
-        element: (
-          <Tutorial
-            title={routeNames.dashboard.children.relayedV3.displayName}
-            tutorialMap={relayedV3Map}
-            tutorialMapComponents={relayedV3MapComponents}
-          />
-        ),
-      },
+      // {
+      //   path: routeNames.dashboard.children.relayedV3.name,
+      //   element: (
+      //     <Tutorial
+      //       title={routeNames.dashboard.children.relayedV3.displayName}
+      //       tutorialMap={relayedV3Map}
+      //       tutorialMapComponents={relayedV3MapComponents}
+      //     />
+      //   ),
+      // },
 
       {
         path: routeNames.dashboard.children.extensionProvider.name,
