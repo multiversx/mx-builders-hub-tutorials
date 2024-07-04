@@ -13,7 +13,7 @@ export const extensionProviderMap = [
     title: "Sign transactions",
     description:
       "You can send multiple transactions to be signed by extension provider",
-    unlocked: true,
+    unlocked: false,
   },
 
   {
