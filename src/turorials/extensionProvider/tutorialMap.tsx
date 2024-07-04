@@ -5,7 +5,7 @@ export const extensionProviderMap = [
   {
     title: "Login",
     description:
-      "Obtain the logged in address, challenge token signature and native auth token.",
+      "Obtain the challenge token signature, logged in address and native auth token.",
     unlocked: false,
   },
 
