@@ -66,9 +66,19 @@ export const Step2 = () => {
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {transactionSignature ? (
-            <SyntaxHighlighter language="javascript" style={darcula}>
-              {`transactionSignature = "${transactionSignature}"`}
-            </SyntaxHighlighter>
+            <>
+              <Typography
+                placeholder=""
+                variant="paragraph"
+                color="blue-gray"
+                className="mb-2"
+              >
+                Output:
+              </Typography>
+              <SyntaxHighlighter language="javascript" style={darcula}>
+                {`transactionSignature = "${transactionSignature}"`}
+              </SyntaxHighlighter>
+            </>
           ) : (
             <Button onClick={signTransactions} placeholder="">
               Generate

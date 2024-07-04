@@ -55,9 +55,19 @@ export const Step3 = () => {
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {signedMessage ? (
-            <SyntaxHighlighter language="javascript" style={darcula}>
-              {`signedMessage = ${signedMessage}`}
-            </SyntaxHighlighter>
+            <>
+              <Typography
+                placeholder=""
+                variant="paragraph"
+                color="blue-gray"
+                className="mb-2"
+              >
+                Output:
+              </Typography>
+              <SyntaxHighlighter language="javascript" style={darcula}>
+                {`signedMessage = ${signedMessage}`}
+              </SyntaxHighlighter>
+            </>
           ) : (
             <Button onClick={signMessage} placeholder="">
               Generate

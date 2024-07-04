@@ -73,9 +73,19 @@ export const Step1 = () => {
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {challengeToken ? (
-            <SyntaxHighlighter language="javascript" style={darcula}>
-              {`challengeToken = "${challengeToken}"`}
-            </SyntaxHighlighter>
+            <>
+              <Typography
+                placeholder=""
+                variant="paragraph"
+                color="blue-gray"
+                className="mb-2"
+              >
+                Output:
+              </Typography>
+              <SyntaxHighlighter language="javascript" style={darcula}>
+                {`challengeToken = "${challengeToken}"`}
+              </SyntaxHighlighter>
+            </>
           ) : (
             <Button onClick={generateNativeAuthChallengeToken} placeholder="">
               Generate
@@ -100,11 +110,21 @@ export const Step1 = () => {
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {challengeTokenSignature ? (
-            <SyntaxHighlighter language="javascript" style={darcula}>
-              {`address = "${address}"
+            <>
+              <Typography
+                placeholder=""
+                variant="paragraph"
+                color="blue-gray"
+                className="mb-2"
+              >
+                Output:
+              </Typography>
+              <SyntaxHighlighter language="javascript" style={darcula}>
+                {`address = "${address}"
 signature = "${challengeTokenSignature}"
               `}
-            </SyntaxHighlighter>
+              </SyntaxHighlighter>
+            </>
           ) : (
             <Button
               disabled={!challengeToken}
@@ -133,13 +153,23 @@ signature = "${challengeTokenSignature}"
         </CardBody>
         <CardFooter placeholder="" className="pt-0">
           {nativeAuthToken ? (
-            <SyntaxHighlighter language="javascript" style={darcula}>
-              {`nativeAuthToken = "${nativeAuthToken}"
+            <>
+              <Typography
+                placeholder=""
+                variant="paragraph"
+                color="blue-gray"
+                className="mb-2"
+              >
+                Output:
+              </Typography>
+              <SyntaxHighlighter language="javascript" style={darcula}>
+                {`nativeAuthToken = "${nativeAuthToken}"
 
 Normally, you would now send this token to your server, which would then validate it.
 Go and check it on:
 https://utils.multiversx.com/auth (switch to Devnet)              `}
-            </SyntaxHighlighter>
+              </SyntaxHighlighter>
+            </>
           ) : (
             <Button
               disabled={!address || !challengeTokenSignature}
