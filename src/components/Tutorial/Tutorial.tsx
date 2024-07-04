@@ -61,7 +61,12 @@ export const Tutorial = ({
           </Typography>
         </div>
         <div>
-          <Button placeholder="" onClick={resetState} size="sm">
+          <Button
+            placeholder=""
+            onClick={resetState}
+            size="sm"
+            className="mt-7"
+          >
             Reset state
           </Button>
         </div>
