@@ -1,17 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setKey, tutorialSelector, unlockStep } from "../../../../redux";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-} from "@material-tailwind/react";
 import { ExtensionProvider } from "@multiversx/sdk-extension-provider";
 import { Address, SignableMessage } from "@multiversx/sdk-core";
-import { signMessageSample } from "../Step1/codeExamples";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { darcula, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { signMessageSample } from "../codeExamples";
+import { TutorialCard } from "../../../../components/TutorialCard";
 
 export const Step3 = () => {
   const {
@@ -46,42 +38,14 @@ export const Step3 = () => {
 
   return (
     <>
-      <Card placeholder="" className="mt-6 w-full">
-        <CardBody placeholder="">
-          <Typography
-            placeholder=""
-            variant="h5"
-            color="blue-gray"
-            className="mb-2"
-          >
-            Prepare and sign message
-          </Typography>
-          <SyntaxHighlighter language="javascript" style={vs2015}>
-            {signMessageSample}
-          </SyntaxHighlighter>
-        </CardBody>
-        <CardFooter placeholder="" className="pt-0">
-          {signedMessage ? (
-            <>
-              <Typography
-                placeholder=""
-                variant="paragraph"
-                color="blue-gray"
-                className="mb-2"
-              >
-                Output:
-              </Typography>
-              <SyntaxHighlighter language="javascript" style={darcula}>
-                {`signedMessage = ${signedMessage}`}
-              </SyntaxHighlighter>
-            </>
-          ) : (
-            <Button onClick={signMessage} placeholder="">
-              Generate
-            </Button>
-          )}
-        </CardFooter>
-      </Card>
+      <TutorialCard
+        title="Prepare and sign message"
+        codeSample={signMessageSample}
+        outputResult={
+          signedMessage ? `signedMessage = ${signedMessage}` : undefined
+        }
+        actionButtonHandler={signMessage}
+      />
     </>
   );
 };

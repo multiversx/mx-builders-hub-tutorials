@@ -8,7 +8,6 @@ import {
 import { PropsWithChildren } from "react";
 import { routeNames } from "../../routes";
 import { useNavigate } from "react-router-dom";
-import { PuzzlePieceIcon } from "@heroicons/react/16/solid";
 
 export const SideBarLayout = ({ children }: PropsWithChildren) => {
   const routes = Object.values(routeNames.dashboard.children);
@@ -34,7 +33,7 @@ export const SideBarLayout = ({ children }: PropsWithChildren) => {
                   onClick={() => navigate(route.name)}
                 >
                   <ListItemPrefix placeholder="">
-                    <PuzzlePieceIcon className="h-5 w-5" />
+                    {route.menuIncon}
                   </ListItemPrefix>
                   {route.displayName}
                 </ListItem>

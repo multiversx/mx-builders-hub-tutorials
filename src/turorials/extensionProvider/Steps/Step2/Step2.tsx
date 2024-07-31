@@ -1,12 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setKey, tutorialSelector, unlockStep } from "../../../../redux";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-} from "@material-tailwind/react";
 import { ExtensionProvider } from "@multiversx/sdk-extension-provider/out";
 import {
   Transaction,
@@ -17,11 +10,10 @@ import {
 import {
   getAccountFromNetworkSample,
   signTransactionSample,
-} from "../Step1/codeExamples";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { darcula, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+} from "../codeExamples";
 import { ApiNetworkProvider } from "@multiversx/sdk-network-providers";
 import { useEffect } from "react";
+import { TutorialCard } from "../../../../components/TutorialCard";
 
 export const Step2 = () => {
   const dispatch = useDispatch();
@@ -93,83 +85,24 @@ export const Step2 = () => {
 
   return (
     <>
-      <Card placeholder="" className="mt-6 w-full">
-        <CardBody placeholder="">
-          <Typography
-            placeholder=""
-            variant="h5"
-            color="blue-gray"
-            className="mb-2"
-          >
-            Get account data from network
-          </Typography>
-          <SyntaxHighlighter language="javascript" style={vs2015}>
-            {getAccountFromNetworkSample}
-          </SyntaxHighlighter>
-        </CardBody>
-        <CardFooter placeholder="" className="pt-0">
-          {account ? (
-            <>
-              <Typography
-                placeholder=""
-                variant="paragraph"
-                color="blue-gray"
-                className="mb-2"
-              >
-                Output:
-              </Typography>
-              <SyntaxHighlighter language="javascript" style={darcula}>
-                {`account = ${account}`}
-              </SyntaxHighlighter>
-            </>
-          ) : (
-            <Button onClick={getAccountFromNetwork} placeholder="">
-              Generate
-            </Button>
-          )}
-        </CardFooter>
-      </Card>
+      <TutorialCard
+        title="Get account data from network"
+        codeSample={getAccountFromNetworkSample}
+        outputResult={account ? `account = ${account}` : undefined}
+        actionButtonHandler={getAccountFromNetwork}
+      />
 
-      <Card placeholder="" className="mt-6 w-full">
-        <CardBody placeholder="">
-          <Typography
-            placeholder=""
-            variant="h5"
-            color="blue-gray"
-            className="mb-2"
-          >
-            Prepare and sign transaction
-          </Typography>
-          <SyntaxHighlighter language="javascript" style={vs2015}>
-            {signTransactionSample}
-          </SyntaxHighlighter>
-        </CardBody>
-        <CardFooter placeholder="" className="pt-0">
-          {signedTransaction ? (
-            <>
-              <Typography
-                placeholder=""
-                variant="paragraph"
-                color="blue-gray"
-                className="mb-2"
-              >
-                Output:
-              </Typography>
-              <SyntaxHighlighter language="javascript" style={darcula}>
-                {`signedTransaction[0] = "${signedTransaction}"`}
-              </SyntaxHighlighter>
-            </>
-          ) : (
-            <Button
-              disabled={!account}
-              onClick={signTransactions}
-              placeholder=""
-            >
-              Generate
-            </Button>
-          )}
-        </CardFooter>
-      </Card>
+      <TutorialCard
+        title="Prepare and sign transaction"
+        codeSample={signTransactionSample}
+        outputResult={
+          signedTransaction
+            ? `signedTransactions[0] = "${signedTransaction}"`
+            : undefined
+        }
+        actionButtonHandler={signTransactions}
+        actionButtonDisabled={!account}
+      />
     </>
   );
 };

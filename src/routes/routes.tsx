@@ -7,19 +7,22 @@ import {
   extensionProviderMap,
   extensionProviderMapComponents,
 } from "../turorials/extensionProvider";
+import { GiftIcon, PuzzlePieceIcon } from "@heroicons/react/16/solid";
 
 export const routeNames = {
   dashboard: {
     name: "/dashboard",
     children: {
-      // relayedV3: {
-      //   name: `/dashboard/relayedV3`,
-      //   displayName: "Relayed transaction V3",
-      // },
+      relayedV3: {
+        name: `/dashboard/relayedV3`,
+        displayName: "Relayed transaction V3",
+        menuIncon: <GiftIcon className="h-5 w-5" />,
+      },
 
       extensionProvider: {
         name: `/dashboard/extensionProvider`,
         displayName: "Extension provider",
+        menuIncon: <PuzzlePieceIcon className="h-5 w-5" />,
       },
     },
   },
@@ -42,16 +45,16 @@ export const router = createBrowserRouter([
       </SideBarLayout>
     ),
     children: [
-      // {
-      //   path: routeNames.dashboard.children.relayedV3.name,
-      //   element: (
-      //     <Tutorial
-      //       title={routeNames.dashboard.children.relayedV3.displayName}
-      //       tutorialMap={relayedV3Map}
-      //       tutorialMapComponents={relayedV3MapComponents}
-      //     />
-      //   ),
-      // },
+      {
+        path: routeNames.dashboard.children.relayedV3.name,
+        element: (
+          <Tutorial
+            title={routeNames.dashboard.children.relayedV3.displayName}
+            tutorialMap={relayedV3Map}
+            tutorialMapComponents={relayedV3MapComponents}
+          />
+        ),
+      },
 
       {
         path: routeNames.dashboard.children.extensionProvider.name,
