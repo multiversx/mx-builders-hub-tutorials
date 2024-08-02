@@ -27,12 +27,12 @@ export const TutorialCard = ({
 }: ITutorialCardProps) => {
   return (
     <>
-      <Card placeholder="" className="mt-6 w-full">
+      <Card placeholder="" className="mt-6 w-full bg-gray-800">
         <CardBody placeholder="">
           <Typography
             placeholder=""
             variant="h5"
-            color="blue-gray"
+            color="white"
             className="mb-2"
           >
             {title}
@@ -50,7 +50,7 @@ export const TutorialCard = ({
               <Typography
                 placeholder=""
                 variant="paragraph"
-                color="blue-gray"
+                color="white"
                 className="mb-2"
               >
                 Output:
