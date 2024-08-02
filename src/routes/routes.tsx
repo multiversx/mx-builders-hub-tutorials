@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Dashboard, Home } from "../pages";
 import { Tutorial } from "../components";
-import { SideBarLayout } from "../components/SideBarLayout";
 import { relayedV3Map, relayedV3MapComponents } from "../turorials";
 import {
   extensionProviderMap,
