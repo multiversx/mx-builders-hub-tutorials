@@ -39,11 +39,7 @@ export const router = createBrowserRouter([
 
   {
     path: routeNames.dashboard.name,
-    element: (
-      <SideBarLayout>
-        <Dashboard />
-      </SideBarLayout>
-    ),
+    element: <Dashboard />,
     children: [
       {
         path: routeNames.dashboard.children.relayedV3.name,
