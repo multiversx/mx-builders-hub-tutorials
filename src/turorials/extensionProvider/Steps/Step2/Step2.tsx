@@ -1,19 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setKey, tutorialSelector, unlockStep } from "../../../../redux";
 import { ExtensionProvider } from "@multiversx/sdk-extension-provider/out";
-import {
-  Transaction,
-  TransactionPayload,
-  Address,
-  Account,
-} from "@multiversx/sdk-core";
+import { Transaction, TransactionPayload, Address } from "@multiversx/sdk-core";
 import {
   getAccountFromNetworkSample,
   signTransactionSample,
 } from "../codeExamples";
-import { ApiNetworkProvider } from "@multiversx/sdk-network-providers";
 import { useEffect } from "react";
 import { TutorialCard } from "../../../../components/TutorialCard";
+import { getAccountFromNetwork } from "../../../commonHelpers";
 
 export const Step2 = () => {
   const dispatch = useDispatch();
@@ -61,18 +56,12 @@ export const Step2 = () => {
     );
   };
 
-  const getAccountFromNetwork = async () => {
+  const retrieveAccountInfo = async () => {
     const provider = ExtensionProvider.getInstance();
     const address = new Address(await provider.getAddress());
-    const networkProvider = new ApiNetworkProvider(
-      "https://devnet-api.multiversx.com"
-    );
-
-    const accountOnNetwork = await networkProvider.getAccount(address);
-    const account = new Account(address);
-    account.update({
-      nonce: accountOnNetwork.nonce,
-      balance: accountOnNetwork.balance,
+    const account = await getAccountFromNetwork({
+      address: address.toBech32(),
+      networkURL: "https://devnet-api.multiversx.com",
     });
 
     dispatch(
@@ -89,7 +78,7 @@ export const Step2 = () => {
         title="Get account data from network"
         codeSample={getAccountFromNetworkSample}
         outputResult={account ? `account = ${account}` : undefined}
-        actionButtonHandler={getAccountFromNetwork}
+        actionButtonHandler={retrieveAccountInfo}
       />
 
       <TutorialCard

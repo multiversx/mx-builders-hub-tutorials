@@ -85,7 +85,6 @@ export const Tutorial = ({
           }}
         >
           {tutorialSteps?.map((tutorialStep: any, index: number) => {
-            console.log(tutorialStep);
             return (
               <Step key={index} placeholder="">
                 {index + 1}
