@@ -56,9 +56,9 @@ export const Tutorial = ({
     <div className="mt-2 ml-3 px-10 ">
       <div className="flex justify-between">
         <div>
-          <Typography placeholder="" variant="h3">
+          {/* <Typography placeholder="" variant="h3">
             {title}
-          </Typography>
+          </Typography> */}
         </div>
         <div>
           <Button
