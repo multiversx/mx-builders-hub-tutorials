@@ -15,6 +15,8 @@ import {
   setSteps,
 } from "../../redux";
 import { useLocation } from "react-router-dom";
+import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
+import { CrossWindowProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/CrossWindowProvider";
 
 export const Tutorial = ({
   title,
@@ -36,6 +38,11 @@ export const Tutorial = ({
     console.log(title);
     if (currentRoute !== location.pathname) {
       dispatch(setCurrentRoute(location.pathname));
+      const iframeProvider = IframeProvider.getInstance();
+      iframeProvider.logout();
+
+      const crossWindowProvider = CrossWindowProvider.getInstance();
+      crossWindowProvider.logout();
       resetState();
     }
   }, [location]);
@@ -66,6 +73,7 @@ export const Tutorial = ({
             placeholder=""
             onClick={resetState}
             size="sm"
+            color="white"
             className="mt-7"
           >
             Reset state
@@ -75,7 +83,7 @@ export const Tutorial = ({
 
       <div className="w-full mt-10">
         <Stepper
-          className="w-full"
+          className="w-full "
           placeholder=""
           activeStep={activeStep}
           isLastStep={(value) => {
@@ -88,7 +96,7 @@ export const Tutorial = ({
           {tutorialSteps?.map((tutorialStep: any, index: number) => {
             console.log(tutorialStep);
             return (
-              <Step key={index} placeholder="">
+              <Step key={index} placeholder="" className="">
                 {index + 1}
               </Step>
             );
@@ -120,11 +128,13 @@ export const Tutorial = ({
             placeholder=""
             onClick={() => setStep(activeStep - 1)}
             disabled={isFirstStep}
+            color="white"
           >
             Prev
           </Button>
           <Button
             placeholder=""
+            color="white"
             onClick={() => setStep(activeStep + 1)}
             disabled={isLastStep || !tutorialSteps[activeStep].unlocked}
           >

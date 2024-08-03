@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setKey, tutorialSelector } from "../../../../redux";
 import { challengeTokenSignatureAndAddressSample } from "../codeExamples";
-import { ExtensionProvider } from "@multiversx/sdk-extension-provider/out";
+import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
 import { TutorialCard } from "../../../../components/TutorialCard";
 import { useProvidersCommon } from "../../../commonHooks";
 import {
@@ -19,12 +19,13 @@ export const Step1 = () => {
     },
   } = useSelector(tutorialSelector);
 
-  const dispatch = useDispatch();
   const { setChallengeTokenToState, setNativeAuthTokenToState } =
     useProvidersCommon();
+  const dispatch = useDispatch();
 
   const loginWithToken = async () => {
-    const provider = ExtensionProvider.getInstance();
+    const provider = IframeProvider.getInstance();
+    provider.setWalletUrl("https://devnet-wallet.multiversx.com");
     await provider.init();
     await provider.login({ token: challengeToken });
 

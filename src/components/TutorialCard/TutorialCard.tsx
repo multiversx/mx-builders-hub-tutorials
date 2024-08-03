@@ -63,9 +63,10 @@ export const TutorialCard = ({
             <Button
               disabled={actionButtonDisabled}
               onClick={actionButtonHandler}
+              color="white"
               placeholder=""
             >
-              {actionButtonLabel || "Generate"}
+              {actionButtonLabel || "Run"}
             </Button>
           )}
         </CardFooter>

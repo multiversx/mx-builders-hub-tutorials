@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setKey, tutorialSelector } from "../../../../redux";
 import { challengeTokenSignatureAndAddressSample } from "../codeExamples";
-import { ExtensionProvider } from "@multiversx/sdk-extension-provider/out";
 import { TutorialCard } from "../../../../components/TutorialCard";
 import { useProvidersCommon } from "../../../commonHooks";
 import {
   challengeTokenSample,
   nativeAuthTokenSample,
 } from "../../../commonCodeSamples";
+import { CrossWindowProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/CrossWindowProvider";
 
 export const Step1 = () => {
   const {
@@ -19,12 +19,13 @@ export const Step1 = () => {
     },
   } = useSelector(tutorialSelector);
 
-  const dispatch = useDispatch();
   const { setChallengeTokenToState, setNativeAuthTokenToState } =
     useProvidersCommon();
+  const dispatch = useDispatch();
 
   const loginWithToken = async () => {
-    const provider = ExtensionProvider.getInstance();
+    const provider = CrossWindowProvider.getInstance();
+    provider.setWalletUrl("https://devnet-wallet.multiversx.com");
     await provider.init();
     await provider.login({ token: challengeToken });
 

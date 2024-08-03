@@ -7,7 +7,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   server: {
-    port: 3005,
+    port: 443,
     strictPort: true,
     host: true,
     https: true,
@@ -32,7 +32,7 @@ export default defineConfig({
     outDir: "dist",
   },
   preview: {
-    port: 3005,
+    port: 443,
     https: true,
     host: "localhost",
     strictPort: true,
