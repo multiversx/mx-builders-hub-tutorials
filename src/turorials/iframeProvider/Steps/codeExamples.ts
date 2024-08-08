@@ -4,7 +4,7 @@ import { MetamaskProxyProvider } from "@multiversx/sdk-metamask-proxy-provider/o
 
 const provider = MetamaskProxyProvider.getInstance();
 await provider.init();
-provider.setWalletUrl("https://snap-wallet.multiversx.com");
+provider.setWalletUrl("https://devnet-snap-wallet.multiversx.com");
 await provider.login({ token: challengeToken });
 
 const address = provider.account.address;

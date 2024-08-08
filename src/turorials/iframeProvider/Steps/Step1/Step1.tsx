@@ -25,7 +25,7 @@ export const Step1 = () => {
 
   const loginWithToken = async () => {
     const provider = MetamaskProxyProvider.getInstance();
-    provider.setWalletUrl("https://devnet-wallet.multiversx.com");
+    provider.setWalletUrl("https://devnet-snap-wallet.multiversx.com");
     await provider.init();
     await provider.login({ token: challengeToken });
 
