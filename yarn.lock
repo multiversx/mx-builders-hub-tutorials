@@ -787,6 +787,15 @@
   resolved "https://registry.yarnpkg.com/@multiversx/sdk-extension-provider/-/sdk-extension-provider-3.0.0.tgz#e0e178ee5555f9440457547759621f5c3152c5fa"
   integrity sha512-xNHLShzimYbMXqEJoiNyB4fNOXQUwSJCzt9FiOA4GdxucJnCgIM25mXtSj2I93cz+KD39QgRjEYep+li/lykOw==
 
+"@multiversx/sdk-metamask-proxy-provider@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@multiversx/sdk-metamask-proxy-provider/-/sdk-metamask-proxy-provider-0.2.0.tgz#8dda49fa4da54f3758d5f48c0c62c1c015af1028"
+  integrity sha512-fgYfMslqEX0gnm+eLwdRI2GYsbbUqEjBS1/YN7dta6ROXhPG9hz0srKcmlaqKtn6zqgiI7KKlWkZ0MJgy7GGuA==
+  dependencies:
+    "@types/jest" "^29.5.11"
+    "@types/qs" "6.9.10"
+    qs "6.11.2"
+
 "@multiversx/sdk-native-auth-client@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@multiversx/sdk-native-auth-client/-/sdk-native-auth-client-1.0.8.tgz#160b34b9ce80595008b1d7fdab75cea6347eb907"

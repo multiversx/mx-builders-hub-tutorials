@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setKey, tutorialSelector, unlockStep } from "../../../../redux";
-import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
 
 import { Transaction, TransactionPayload, Address } from "@multiversx/sdk-core";
 import {
@@ -10,6 +9,7 @@ import {
 import { useEffect } from "react";
 import { TutorialCard } from "../../../../components/TutorialCard";
 import { getAccountFromNetwork } from "../../../commonHelpers";
+import { MetamaskProxyProvider } from "@multiversx/sdk-metamask-proxy-provider/out";
 
 export const Step2 = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const Step2 = () => {
   useEffect(() => {
     if (address) {
       (async () => {
-        const provider = IframeProvider.getInstance();
+        const provider = MetamaskProxyProvider.getInstance();
         provider.setWalletUrl("https://devnet-wallet.multiversx.com");
         await provider.init();
         provider.setAddress(address);
@@ -33,7 +33,7 @@ export const Step2 = () => {
   }, [account, signedTransaction]);
 
   const signTransactions = async () => {
-    const provider = IframeProvider.getInstance();
+    const provider = MetamaskProxyProvider.getInstance();
     const sender = await provider.getAddress();
     const transaction = new Transaction({
       nonce: JSON.parse(account).nonce,
@@ -59,7 +59,7 @@ export const Step2 = () => {
   };
 
   const retrieveAccountInfo = async () => {
-    const provider = IframeProvider.getInstance();
+    const provider = MetamaskProxyProvider.getInstance();
     const address = new Address(await provider.getAddress());
     const account = await getAccountFromNetwork({
       address: address.toBech32(),

@@ -1,8 +1,8 @@
 export const challengeTokenSignatureAndAddressSample = `
-import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
+import { MetamaskProxyProvider } from "@multiversx/sdk-metamask-proxy-provider/out";
 
 
-const provider = IframeProvider.getInstance();
+const provider = MetamaskProxyProvider.getInstance();
 await provider.init();
 provider.setWalletUrl("https://devnet-wallet.multiversx.com");
 await provider.login({ token: challengeToken });
@@ -12,11 +12,11 @@ const signature = provider.account.signature;
 `;
 
 export const signTransactionSample = `
-import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
+import { MetamaskProxyProvider } from "@multiversx/sdk-metamask-proxy-provider/out";
 
 import { Transaction, TransactionPayload, Address } from "@multiversx/sdk-core";
 
-const provider = IframeProvider.getInstance();
+const provider = MetamaskProxyProvider.getInstance();
 const sender = await provider.getAddress();
 
 const transaction = new Transaction({
@@ -37,11 +37,11 @@ const signedTransactions = await provider.signTransactions([transaction]);
 `;
 
 export const signMessageSample = `
-import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
+import { MetamaskProxyProvider } from "@multiversx/sdk-metamask-proxy-provider/out";
 
 import { Address, SignableMessage } from "@multiversx/sdk-core";
 
-const provider = IframeProvider.getInstance();
+const provider = MetamaskProxyProvider.getInstance();
 const address = await provider.getAddress();
 const message = new SignableMessage({
   message: Buffer.from("hello"),
@@ -52,12 +52,12 @@ const signedMessage = JSON.stringify(message.toJSON(), null, 4);
 `;
 
 export const getAccountFromNetworkSample = `
-import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
+import { MetamaskProxyProvider } from "@multiversx/sdk-metamask-proxy-provider/out";
 
 import { Address } from "@multiversx/sdk-core";
 import { ApiNetworkProvider } from "@multiversx/sdk-network-providers";
 
-const provider = IframeProvider.getInstance();
+const provider = MetamaskProxyProvider.getInstance();
 const address = new Address(await provider.getAddress());
 const networkProvider = new ApiNetworkProvider(
   "https://devnet-api.multiversx.com"

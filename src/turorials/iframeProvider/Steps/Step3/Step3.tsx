@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setKey, tutorialSelector, unlockStep } from "../../../../redux";
-import { IframeProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/IFrameProvider/IframeProvider";
 import { Address, SignableMessage } from "@multiversx/sdk-core";
 import { signMessageSample } from "../codeExamples";
 import { TutorialCard } from "../../../../components/TutorialCard";
 import { useEffect } from "react";
+import { MetamaskProxyProvider } from "@multiversx/sdk-metamask-proxy-provider/out";
 
 export const Step3 = () => {
   const {
@@ -14,7 +14,7 @@ export const Step3 = () => {
   useEffect(() => {
     if (stateAddress) {
       (async () => {
-        const provider = IframeProvider.getInstance();
+        const provider = MetamaskProxyProvider.getInstance();
         provider.setWalletUrl("https://devnet-wallet.multiversx.com");
         await provider.init();
         provider.setAddress(stateAddress);
@@ -23,7 +23,7 @@ export const Step3 = () => {
   }, []);
 
   const signMessage = async () => {
-    const provider = IframeProvider.getInstance();
+    const provider = MetamaskProxyProvider.getInstance();
 
     const address = await provider.getAddress();
     const message = new SignableMessage({
