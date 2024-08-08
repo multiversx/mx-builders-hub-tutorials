@@ -7,7 +7,7 @@ import {
   challengeTokenSample,
   nativeAuthTokenSample,
 } from "../../../commonCodeSamples";
-import { CrossWindowProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out/CrossWindowProvider";
+import { CrossWindowProvider } from "@multiversx/sdk-web-wallet-cross-window-provider/out";
 
 export const Step1 = () => {
   const {
